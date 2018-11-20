@@ -22,7 +22,7 @@ void display_card_player()
 	}
 	printf("\n");
 	for(i=0;i<ROW;++i,printf("\n"))
-		for(j=0;j<COLUMN;++j)
+		for(j=0;j<COLUMN;j++)
 			printf("%d \t",bingoCard[i][j]);
 }
 void display_card_Com()
@@ -36,7 +36,7 @@ void display_card_Com()
 	}
 	printf("\n");
 	for(i=0;i<ROW;++i,printf("\n"))
-		for(j=0;j<COLUMN;++j)
+		for(j=0;j<COLUMN;j++)
 			printf("%d \t",bingoCard_Com[i][j]);
 }
 
@@ -62,13 +62,18 @@ void CreateBingoCard(int Card[ROW][COLUMN])
 			Card[i][j] = RandomNumbers[++k];
 
 }
+
+
 int bingoName_pos=0;
+
 void check_player()
 {
 	int count=0,s,r;
 	for(s=0;s<5;s++)
-		for(r=0;r<5;r++)
-			if(bingoCard[s][r]==0)
+	{
+	    for(r=0;r<5;r++)
+        {
+            if(bingoCard[s][r]==0)
 			{
 				count++;
 				if(count==5)
@@ -79,9 +84,14 @@ void check_player()
 						printf("\nU WON!!!!!!!\n");
 				}
 			}
+        }
+        count=0;
+	}
 	for(r=0;r<5;r++)
-		for(s=0;s<5;s++)
-			if(bingoCard[s][r]==0)
+	{
+        for(s=0;s<5;s++)
+		{
+		    if(bingoCard[s][r]==0)
 			{
 				count++;
 				if(count==5)
@@ -92,15 +102,22 @@ void check_player()
 						printf("\nU WON!!!!!!!\n");
 				}
 			}
+		}
+		count=0;
+	}
 }
 
 int bingoName_Com_pos=0;
+
+
 void check_Com()
 {
 	int count_Com=0,s,r,j;
 	for(s=0;s<5;s++)
-		for(j=0;j<5;j++)
-			if(bingoCard_Com[s][r]==0)
+	{
+	    for(j=0;j<5;j++)
+        {
+            if(bingoCard_Com[s][r]==0)
 			{
 				count_Com++;
 				if(count_Com==5)
@@ -111,8 +128,13 @@ void check_Com()
 						printf("\nU WON!!!!!!!\n");
 				}
 			}
+        }
+        count_Com=0;
+	}
 	for(r=0;r<5;r++)
-		for(s=0;s<5;s++)
+	{
+	    for(s=0;s<5;s++)
+        {
 			if(bingoCard_Com[s][r]==0)
 			{
 				count_Com++;
@@ -124,6 +146,9 @@ void check_Com()
 						printf("\nU WON!!!!!!!\n");
 				}
 			}
+        }
+        count_Com=0;
+	}
 }
 void call_Com()
 {
@@ -140,8 +165,8 @@ void call_Com()
 			g++;
 		}
 	printf("\n%d\n",z);
-	while(z==0)
-		call_Com();
+	//while(z==0)
+		//call_Com();
 	for(i=0;i<5;i++)
 		for(j=0;j<5;j++)
 			if(bingoCard_Com[i][j]==z)
