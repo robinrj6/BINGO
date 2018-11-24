@@ -82,11 +82,13 @@ void check_player()
 					bingoName_pos++;
 					if(bingoName_pos==4)
 						printf("\nU WON!!!!!!!\n");
+                    break;
 				}
 			}
         }
         count=0;
 	}
+	count=0;
 	for(r=0;r<5;r++)
 	{
         for(s=0;s<5;s++)
@@ -100,6 +102,7 @@ void check_player()
 					bingoName_pos++;
 					if(bingoName_pos==4)
 						printf("\nU WON!!!!!!!\n");
+                    break;
 				}
 			}
 		}
@@ -126,11 +129,13 @@ void check_Com()
 					bingoName_Com_pos++;
 					if(bingoName_Com_pos==4)
 						printf("\nU WON!!!!!!!\n");
+                    break;
 				}
 			}
         }
         count_Com=0;
 	}
+	count_Com=0;
 	for(r=0;r<5;r++)
 	{
 	    for(s=0;s<5;s++)
@@ -144,6 +149,7 @@ void check_Com()
 					bingoName_Com_pos++;
 					if(bingoName_Com_pos==4)
 						printf("\nU WON!!!!!!!\n");
+                    break;
 				}
 			}
         }
@@ -157,13 +163,15 @@ void call_Com()
 	call=rand()%25;
 	z=RandomNumbers[call];
 	for(int h=0;h<25;h++)
-		if(called[h]==z)
+	{
+	    if(called[h]==z)
 			call_Com();
 		else
 		{
 			called[g]=z;
 			g++;
 		}
+	}
 	printf("\n%d\n",z);
 	//while(z==0)
 		//call_Com();
@@ -185,13 +193,15 @@ void call_player()
 	printf("Call a Number b/w 1 and 25:");
 	scanf("%d",&call);
 	for(int h=0;h<25;h++)
-		if(called[h]==call)
+	{
+	    if(called[h]==call)
 			call_player();
 		else
 		{
 			called[g]=call;
 			g++;
 		}
+	}
 	for(i=0;i<5;i++)
 		for(j=0;j<5;j++)
 			if(bingoCard[i][j]==call)
